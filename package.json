@@ -9,7 +9,9 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@react-native-community/datetimepicker": "^6.2.0",
     "@react-native-community/hooks": "^2.8.1",
+    "@react-native-picker/picker": "^2.4.2",
     "expo": "~46.0.13",
     "expo-constants": "^13.2.4",
     "expo-status-bar": "~1.4.0",
@@ -17,8 +19,10 @@
     "react": "18.0.0",
     "react-dom": "18.0.0",
     "react-native": "0.69.6",
+    "react-native-gesture-handler": "~2.5.0",
+    "react-native-vector-icons": "^9.2.0",
     "react-native-web": "~0.18.7",
-    "react-native-gesture-handler": "~2.5.0"
+    "rneui": "^1.0.0-stable.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
