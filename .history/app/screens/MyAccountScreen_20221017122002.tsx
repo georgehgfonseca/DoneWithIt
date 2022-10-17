@@ -21,7 +21,7 @@ export default function MyAccountScreen({ name, email, image }: UserData) {
         image={image}
         onPress={() => console.log("Message selected", name)}
         renderRightActions={() => console.log("Message selected", email)}
-        // makeChevronRight
+        makeChevronRight
       ></ListItem>
       <View style={{ paddingTop: 48 }}></View>
       <MyMenuItem

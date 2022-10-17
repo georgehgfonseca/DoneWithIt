@@ -17,15 +17,14 @@ interface Message {
 const initialMessages = [
   {
     id: 1,
-    title: "George Fonseca",
-    description: "Hey! Is this item still available?",
+    title: "T1",
+    description: "D1",
     image: require("../assets/george.jpeg"),
   },
   {
     id: 2,
-    title: "George Fonseca",
-    description:
-      "I'm interested in this item. When will you be able to post it?",
+    title: "T2",
+    description: "D2",
     image: require("../assets/george.jpeg"),
   },
 ];

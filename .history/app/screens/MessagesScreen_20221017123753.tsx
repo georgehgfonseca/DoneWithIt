@@ -23,9 +23,8 @@ const initialMessages = [
   },
   {
     id: 2,
-    title: "George Fonseca",
-    description:
-      "I'm interested in this item. When will you be able to post it?",
+    title: "T2",
+    description: "D2",
     image: require("../assets/george.jpeg"),
   },
 ];

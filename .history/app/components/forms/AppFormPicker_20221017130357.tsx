@@ -17,7 +17,6 @@ export default function AppFormPicker({
     <>
       <AppPicker
         items={items}
-        numberOfColumns={numberOfColumns}
         onSelectItem={(item) => setFieldValue(name, item)}
         PickerItemComponent={PickerItemComponent}
         placeholder={placeholder}

@@ -12,9 +12,7 @@ import { Category } from "../../App";
 interface AppPickerProps {
   icon?: any;
   items: any;
-  numberOfColumns?: number;
   onSelectItem: (item: Category) => void;
-  PickerItemComponent?: any;
   selectedItem: Category | undefined;
   placeholder: string;
   width: any;
@@ -22,9 +20,7 @@ interface AppPickerProps {
 export default function AppPicker({
   icon,
   items,
-  numberOfColumns = 1,
   onSelectItem,
-  PickerItemComponent = PickerItem,
   selectedItem,
   placeholder,
   width = "100%",
@@ -48,6 +44,9 @@ export default function AppPicker({
           ) : (
             <AppText style={styles.placeholder}>{placeholder}</AppText>
           )}
+          {/* <AppText style={styles.text}>
+            {selectedItem ? selectedItem.label : placeholder}
+          </AppText> */}
           <MaterialCommunityIcons
             name="chevron-down"
             size={20}
@@ -61,16 +60,14 @@ export default function AppPicker({
           <FlatList
             data={items}
             keyExtractor={(item) => item.value.toString()}
-            numColumns={numberOfColumns}
             renderItem={({ item }) => (
-              <PickerItemComponent
-                item={item}
+              <PickerItem
                 label={item.label}
                 onPress={() => {
                   setModalVisible(false);
                   onSelectItem(item);
                 }}
-              ></PickerItemComponent>
+              ></PickerItem>
             )}
           ></FlatList>
         </Screen>

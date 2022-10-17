@@ -12,7 +12,6 @@ import { Category } from "../../App";
 interface AppPickerProps {
   icon?: any;
   items: any;
-  numberOfColumns?: number;
   onSelectItem: (item: Category) => void;
   PickerItemComponent?: any;
   selectedItem: Category | undefined;
@@ -22,9 +21,8 @@ interface AppPickerProps {
 export default function AppPicker({
   icon,
   items,
-  numberOfColumns = 1,
   onSelectItem,
-  PickerItemComponent = PickerItem,
+  PickerItemComponent,
   selectedItem,
   placeholder,
   width = "100%",
@@ -61,16 +59,14 @@ export default function AppPicker({
           <FlatList
             data={items}
             keyExtractor={(item) => item.value.toString()}
-            numColumns={numberOfColumns}
             renderItem={({ item }) => (
-              <PickerItemComponent
-                item={item}
+              <PickerItem
                 label={item.label}
                 onPress={() => {
                   setModalVisible(false);
                   onSelectItem(item);
                 }}
-              ></PickerItemComponent>
+              ></PickerItem>
             )}
           ></FlatList>
         </Screen>

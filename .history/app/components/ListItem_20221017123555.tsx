@@ -44,7 +44,7 @@ export default function ListItem({
                 {title}
               </AppText>
               {subTitle && (
-                <AppText style={styles.subTitle} numberOfLines={2}>
+                <AppText style={styles.subTitle} numberOfLines={1}>
                   {subTitle}
                 </AppText>
               )}

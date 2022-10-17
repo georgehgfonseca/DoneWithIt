@@ -73,8 +73,8 @@ export default function ListingEditScreen() {
         <AppFormPicker
           name="category"
           items={categories}
-          numberOfColumns={3}
-          PickerItemComponent={CategoryPickerItem}
+          // numberOfColumns={3}
+          // PickerItemComponent={CategoryPickerItem}
           placeholder="Category"
           width="50%"
         ></AppFormPicker>

@@ -4,12 +4,12 @@ import {
   StyleSheet,
   Image,
   ImageSourcePropType,
+  TouchableOpacity,
   TouchableHighlight,
   GestureResponderEvent,
 } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import Swipeable from "react-native-gesture-handler/Swipeable";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import colors from "../config/colors";
 import AppText from "./AppText";
@@ -40,20 +40,16 @@ export default function ListItem({
             {IconComponent}
             {image && <Image style={styles.image} source={image}></Image>}
             <View style={styles.detailsContainer}>
-              <AppText style={styles.title} numberOfLines={1}>
-                {title}
-              </AppText>
+              <AppText style={styles.title}>{title}</AppText>
               {subTitle && (
-                <AppText style={styles.subTitle} numberOfLines={2}>
-                  {subTitle}
-                </AppText>
+                <AppText style={styles.subTitle}>{subTitle}</AppText>
               )}
             </View>
             {makeChevronRight && (
               <MaterialCommunityIcons
-                name={"chevron-right"}
-                size={24}
-                color={colors.medium}
+                name={name}
+                size={size / 2}
+                color={color}
               ></MaterialCommunityIcons>
             )}
           </View>
@@ -66,13 +62,12 @@ export default function ListItem({
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
-    alignItems: "center",
     padding: 16,
+    backgroundColor: colors.white,
   },
   detailsContainer: {
     marginLeft: 10,
     justifyContent: "center",
-    flex: 1,
   },
   image: {
     width: 64,

@@ -4,6 +4,7 @@ import {
   StyleSheet,
   Image,
   ImageSourcePropType,
+  TouchableOpacity,
   TouchableHighlight,
   GestureResponderEvent,
 } from "react-native";
@@ -36,24 +37,22 @@ export default function ListItem({
     <GestureHandlerRootView>
       <Swipeable renderRightActions={renderRightActions}>
         <TouchableHighlight underlayColor={colors.light} onPress={onPress}>
-          <View style={styles.container}>
-            {IconComponent}
-            {image && <Image style={styles.image} source={image}></Image>}
-            <View style={styles.detailsContainer}>
-              <AppText style={styles.title} numberOfLines={1}>
-                {title}
-              </AppText>
-              {subTitle && (
-                <AppText style={styles.subTitle} numberOfLines={2}>
-                  {subTitle}
-                </AppText>
-              )}
+          <View style={styles.mainContainer}>
+            <View style={styles.container}>
+              {IconComponent}
+              {image && <Image style={styles.image} source={image}></Image>}
+              <View style={styles.detailsContainer}>
+                <AppText style={styles.title}>{title}</AppText>
+                {subTitle && (
+                  <AppText style={styles.subTitle}>{subTitle}</AppText>
+                )}
+              </View>
             </View>
             {makeChevronRight && (
               <MaterialCommunityIcons
                 name={"chevron-right"}
-                size={24}
-                color={colors.medium}
+                size={16}
+                // color={color}
               ></MaterialCommunityIcons>
             )}
           </View>
@@ -64,15 +63,19 @@ export default function ListItem({
 }
 
 const styles = StyleSheet.create({
+  mainContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center"
+    backgroundColor: colors.white,
+  },
   container: {
     flexDirection: "row",
-    alignItems: "center",
     padding: 16,
   },
   detailsContainer: {
     marginLeft: 10,
     justifyContent: "center",
-    flex: 1,
   },
   image: {
     width: 64,

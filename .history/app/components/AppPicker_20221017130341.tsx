@@ -22,7 +22,7 @@ interface AppPickerProps {
 export default function AppPicker({
   icon,
   items,
-  numberOfColumns = 1,
+  numberOfColumns,
   onSelectItem,
   PickerItemComponent = PickerItem,
   selectedItem,

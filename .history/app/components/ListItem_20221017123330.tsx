@@ -40,9 +40,7 @@ export default function ListItem({
             {IconComponent}
             {image && <Image style={styles.image} source={image}></Image>}
             <View style={styles.detailsContainer}>
-              <AppText style={styles.title} numberOfLines={1}>
-                {title}
-              </AppText>
+              <AppText style={styles.title}>{title}</AppText>
               {subTitle && (
                 <AppText style={styles.subTitle} numberOfLines={2}>
                   {subTitle}
@@ -64,9 +62,15 @@ export default function ListItem({
 }
 
 const styles = StyleSheet.create({
+  mainContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingRight: 16,
+    backgroundColor: colors.white,
+  },
   container: {
     flexDirection: "row",
-    alignItems: "center",
     padding: 16,
   },
   detailsContainer: {
