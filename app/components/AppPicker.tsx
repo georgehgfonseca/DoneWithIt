@@ -8,6 +8,7 @@ import AppText from "./AppText";
 import Screen from "./Screen";
 import PickerItem from "./PickerItem";
 import { Category } from "../../App";
+import CategoryPickerItem from "./CategoryPickerItem";
 
 interface AppPickerProps {
   icon?: any;
@@ -24,7 +25,7 @@ export default function AppPicker({
   items,
   numberOfColumns = 1,
   onSelectItem,
-  PickerItemComponent = PickerItem,
+  PickerItemComponent = CategoryPickerItem,
   selectedItem,
   placeholder,
   width = "100%",
@@ -65,7 +66,6 @@ export default function AppPicker({
             renderItem={({ item }) => (
               <PickerItemComponent
                 item={item}
-                label={item.label}
                 onPress={() => {
                   setModalVisible(false);
                   onSelectItem(item);

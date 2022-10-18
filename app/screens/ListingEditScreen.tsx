@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { StyleSheet } from "react-native";
 import * as Yup from "yup";
+import * as Location from "expo-location";
 
 import Screen from "../components/Screen";
 import {
@@ -9,14 +10,16 @@ import {
   AppFormPicker,
   SubmitButton,
 } from "../components/forms";
-import { Category } from "../../App";
 import CategoryPickerItem from "../components/CategoryPickerItem";
+import AppFormImagePicker from "../components/forms/AppFormImagePicker";
+import useLocation from "../hooks/useLocation";
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required().min(1).label("Title"),
   price: Yup.number().required().min(1).max(10000).label("Price"),
   category: Yup.object().required().nullable().label("Category"),
   description: Yup.string().label("Description"),
+  images: Yup.array().min(1, "Please select at least one image."),
 });
 
 const categories = [
@@ -45,7 +48,8 @@ const categories = [
 ];
 
 export default function ListingEditScreen() {
-  const [category, setCategory] = useState<Category>();
+  const location = useLocation();
+
   return (
     <Screen style={styles.container}>
       <AppForm
@@ -54,10 +58,12 @@ export default function ListingEditScreen() {
           price: "",
           category: null,
           description: "",
+          images: [],
         }}
-        onSubmit={(values: any) => console.log(values)}
+        onSubmit={(values: any) => console.log(location)}
         validationSchema={validationSchema}
       >
+        <AppFormImagePicker name="images"></AppFormImagePicker>
         <AppFormField
           maxLength={255}
           name="title"

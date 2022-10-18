@@ -1,23 +1,11 @@
-import { useState } from "react";
-import { Switch, Text, TextInput, View } from "react-native";
-import AppTextInput from "./app/components/AppTextInput";
-import Card from "./app/components/Card";
-import Icon from "./app/components/Icon";
-import ListItem from "./app/components/ListItem";
+import { useEffect, useState } from "react";
+import { Button, Image, Switch, Text, TextInput, View } from "react-native";
 import Screen from "./app/components/Screen";
-import AccountScreen from "./app/screens/AccountScreen";
-import { ListingDetailsScreen } from "./app/screens/ListingDetailsScreen";
-import ListingsScreen from "./app/screens/ListingsScreen";
-import MessagesScreen from "./app/screens/MessagesScreen";
-import MyAccountScreen from "./app/screens/MyAccountScreen";
-import ViewImageScreen from "./app/screens/ViewImageScreen";
-import WelcomeScreen from "./app/screens/WelcomeScreen";
-import { Input } from "@rneui/base";
-import AppPicker from "./app/components/AppPicker";
-import LoginScreen from "./app/screens/LoginScreen";
-import RegisterScreen from "./app/screens/RegisterScreen";
+import * as ImagePicker from "expo-image-picker";
+import * as Permissions from "expo-permissions";
+import ImageInput from "./app/components/ImageInput";
+import ImageInputList from "./app/components/ImageInputList";
 import ListingEditScreen from "./app/screens/ListingEditScreen";
-
 export interface Category {
   label: string;
   value: number;
@@ -27,11 +15,56 @@ export default function App() {
   return <ListingEditScreen></ListingEditScreen>;
 }
 
+// const [imageUris, setImageUris] = useState<string[]>([]);
+
+// const handleAdd = (uri: string) => {
+//   setImageUris([...imageUris, uri]);
+// };
+
+// const handleRemove = (uri: string) => {
+//   setImageUris(imageUris.filter((imageUri) => imageUri !== uri));
+// };
+
+// const requestPermission = async () => {
+//   // const result = await Permissions.askAsync(Permissions.MEDIA_LIBRARY, Permissions.LOCATION_BACKGROUND)
+//   const { granted } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+//   if (!granted) alert("You need to enable permission to access the library");
+// };
+{
+  /* <Screen>
+<ImageInputList
+  imageUris={imageUris}
+  onAddImage={handleAdd}
+  onRemoveImage={handleRemove}
+></ImageInputList>
+</Screen> */
+}
+
+// useEffect(() => {
+//   requestPermission();
+// }, []);
+
+// const selectImage = async () => {
+//   try {
+//     const result = await ImagePicker.launchImageLibraryAsync();
+//     if (!result.cancelled) setImageUri(result.uri);
+//   } catch (error) {
+//     console.log("Error reasing an image", error);
+//   }
+// };
+
 // const categories = [
 //   { label: "Furniture", value: 1 },
 //   { label: "Clothing", value: 2 },
 //   { label: "Cameras", value: 3 },
 // ];
+{
+  /* <Button title="Select image" onPress={selectImage}></Button>
+<Image
+  source={{ uri: imageUri }}
+  style={{ width: 200, height: 200 }}
+></Image> */
+}
 
 // <Screen>
 //   <AppPicker
