@@ -24,9 +24,7 @@
       "adaptiveIcon": {
         "foregroundImage": "./app/assets/logo-red.png",
         "backgroundColor": "#FFFFFF"
-      },
-      "package": "com.george.donewithit",
-      "versionCode": 1
+      }
     },
     "web": {
       "favicon": "./app/assets/logo-red.png"
