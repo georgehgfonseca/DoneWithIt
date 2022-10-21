@@ -9,10 +9,10 @@ import {
 } from "react-native";
 import { Image } from "react-native-expo-image-cache";
 import * as Yup from "yup";
-import * as Notifications from "expo-notifications";
-
 import messagesApi from "../api/messages";
+
 import AppText from "../components/AppText";
+import AppTextInput from "../components/AppTextInput";
 import { AppForm, AppFormField, SubmitButton } from "../components/forms";
 import ListItem from "../components/ListItem";
 import colors from "../config/colors";
@@ -23,12 +23,10 @@ const validationSchema = Yup.object().shape({
 });
 
 export default function ListingDetailsScreen({ route }: any) {
-  const [error, setError] = useState<string>();
-
   const sendApi = useApi(messagesApi.send);
   const listing = route.params;
 
-  const handleSubmit = async (messageInfo: any, { resetForm }: any) => {
+  const handleSubmit = async (messageInfo: any) => {
     Keyboard.dismiss();
     const result: any = await sendApi.request({
       message: messageInfo.message,
@@ -38,17 +36,9 @@ export default function ListingDetailsScreen({ route }: any) {
 
     if (!result.ok) {
       console.log("Error", result);
-      if (result.data) setError(result.data.error);
-      else {
-        setError("An unexpected error occurred");
-      }
       return Alert.alert("Error", "Could not send the message to the seller");
     }
     resetForm();
-    Notifications.presentNotificationAsync({
-      title: "Awesome",
-      body: "Your message was sent to the seller.",
-    });
   };
 
   return (

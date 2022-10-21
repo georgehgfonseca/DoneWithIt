@@ -1,18 +1,18 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import Notifications from "expo-notifications";
+import * as Permissions from "expo-permissions";
 
 import ListingEditScreen from "../screens/ListingEditScreen";
 import FeedNavigator from "./FeedNavigator";
 import AccountNavigator from "./AccountNavigator";
 import NewListingButton from "./NewListingButton";
 import routes from "./routes";
-import useNotifications from "../hooks/useNotifications";
+
 const Tab = createBottomTabNavigator();
 
 export default function AppNavigator() {
-  useNotifications();
-
   return (
     <Tab.Navigator>
       <Tab.Screen

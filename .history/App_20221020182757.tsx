@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import AppLoading from "expo-app-loading";
 
@@ -6,9 +5,12 @@ import navigationTheme from "./app/navigation/navigationTheme";
 import AppNavigator from "./app/navigation/AppNavigator";
 import OfflineNotice from "./app/components/OfflineNotice";
 import AuthNavigator from "./app/navigation/AuthNavigator";
+import React, { useState } from "react";
 import AuthContext from "./app/auth/context";
 import authStorage from "./app/auth/storage";
 import { navigationRef } from "./app/navigation/rootNavigation";
+import { Button } from "react-native";
+import * as Notifications from "expo-notifications";
 
 export default function App() {
   const [user, setUser] = useState();
@@ -28,27 +30,25 @@ export default function App() {
       />
     );
 
+  const showNotification = () => {
+    Notifications.scheduleNotificationAsync({
+      title: "Congrats",
+      body: "Your order was successfully placed!",
+    });
+  };
+
   return (
-    <AuthContext.Provider value={{ user, setUser }}>
-      <OfflineNotice />
-      <NavigationContainer ref={navigationRef} theme={navigationTheme}>
-        {user ? <AppNavigator /> : <AuthNavigator />}
-      </NavigationContainer>
-    </AuthContext.Provider>
+    <Button title="Show notification" onPress={showNotification}></Button>
+    // <AuthContext.Provider value={{ user, setUser }}>
+    //   <OfflineNotice />
+    //   <NavigationContainer ref={navigationRef} theme={navigationTheme}>
+    //     {user ? <AppNavigator /> : <AuthNavigator />}
+    //   </NavigationContainer>
+    // </AuthContext.Provider>
   );
 }
 
 //PLAYGROUND - JUST IGNORE IT:
-
-// const showNotification = () => {
-//   Notifications.presentNotificationAsync({
-//     title: "Congrats",
-//     body: "Your order was successfully placed!",
-//     data: {
-//       _displayInForeground: true,
-//     },
-//   });
-// };
 
 // const demo = async () => {
 //   try {

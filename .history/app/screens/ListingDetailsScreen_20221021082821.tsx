@@ -1,18 +1,11 @@
 import React, { useState } from "react";
-import {
-  View,
-  StyleSheet,
-  KeyboardAvoidingView,
-  Platform,
-  Keyboard,
-  Alert,
-} from "react-native";
+import { View, StyleSheet, KeyboardAvoidingView, Platform } from "react-native";
 import { Image } from "react-native-expo-image-cache";
 import * as Yup from "yup";
-import * as Notifications from "expo-notifications";
-
 import messagesApi from "../api/messages";
+
 import AppText from "../components/AppText";
+import AppTextInput from "../components/AppTextInput";
 import { AppForm, AppFormField, SubmitButton } from "../components/forms";
 import ListItem from "../components/ListItem";
 import colors from "../config/colors";
@@ -28,8 +21,7 @@ export default function ListingDetailsScreen({ route }: any) {
   const sendApi = useApi(messagesApi.send);
   const listing = route.params;
 
-  const handleSubmit = async (messageInfo: any, { resetForm }: any) => {
-    Keyboard.dismiss();
+  const handleSubmit = async (messageInfo: any) => {
     const result: any = await sendApi.request({
       message: messageInfo.message,
       listingId: listing.id,
@@ -37,18 +29,13 @@ export default function ListingDetailsScreen({ route }: any) {
     console.log(result);
 
     if (!result.ok) {
-      console.log("Error", result);
       if (result.data) setError(result.data.error);
       else {
         setError("An unexpected error occurred");
+        console.log(result);
       }
-      return Alert.alert("Error", "Could not send the message to the seller");
+      return;
     }
-    resetForm();
-    Notifications.presentNotificationAsync({
-      title: "Awesome",
-      body: "Your message was sent to the seller.",
-    });
   };
 
   return (

@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import AppLoading from "expo-app-loading";
 
@@ -6,6 +5,7 @@ import navigationTheme from "./app/navigation/navigationTheme";
 import AppNavigator from "./app/navigation/AppNavigator";
 import OfflineNotice from "./app/components/OfflineNotice";
 import AuthNavigator from "./app/navigation/AuthNavigator";
+import React, { useState } from "react";
 import AuthContext from "./app/auth/context";
 import authStorage from "./app/auth/storage";
 import { navigationRef } from "./app/navigation/rootNavigation";
@@ -39,16 +39,6 @@ export default function App() {
 }
 
 //PLAYGROUND - JUST IGNORE IT:
-
-// const showNotification = () => {
-//   Notifications.presentNotificationAsync({
-//     title: "Congrats",
-//     body: "Your order was successfully placed!",
-//     data: {
-//       _displayInForeground: true,
-//     },
-//   });
-// };
 
 // const demo = async () => {
 //   try {

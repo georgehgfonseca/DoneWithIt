@@ -28,7 +28,7 @@ export default function ListingDetailsScreen({ route }: any) {
   const sendApi = useApi(messagesApi.send);
   const listing = route.params;
 
-  const handleSubmit = async (messageInfo: any, { resetForm }: any) => {
+  const handleSubmit = async (messageInfo: any) => {
     Keyboard.dismiss();
     const result: any = await sendApi.request({
       message: messageInfo.message,
@@ -44,10 +44,12 @@ export default function ListingDetailsScreen({ route }: any) {
       }
       return Alert.alert("Error", "Could not send the message to the seller");
     }
-    resetForm();
     Notifications.presentNotificationAsync({
-      title: "Awesome",
-      body: "Your message was sent to the seller.",
+      title: "Congrats",
+      body: "Your order was successfully placed!",
+      data: {
+        _displayInForeground: true,
+      },
     });
   };
 
